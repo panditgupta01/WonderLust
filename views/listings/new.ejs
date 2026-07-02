@@ -1,0 +1,38 @@
+<% layout("/layouts/boilerplate") %>
+    <body>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <br>
+                <h3>Create new Listing</h3>
+                <form method="post" action="/listings">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" name="title" required class="form-control" placeholder="enter title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="" class="form-control"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="text" name="image" class="form-control" placeholder="enter img URL/link">
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" name="price" required class="form-control" placeholder="enter price">
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label for="location" class="form-label">Location</label>
+                                <input type="text" name="location" class="form-control" placeholder="enter location">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="country" class="form-label">Country</label>
+                            <input type="text" name="country" class="form-control" placeholder="enter country">
+                        </div>
+                        <button class="btn btn-dark mb-5 mt-3 ad-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
