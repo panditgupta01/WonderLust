@@ -197,7 +197,7 @@ http://localhost:8080/listings
 
 GitHub: https://github.com/panditgupta01
 
-LinkedIn: *(Add your LinkedIn URL here)*
+LinkedIn: https://www.linkedin.com/in/panditgupta01
 
 ---
 
