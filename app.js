@@ -1,11 +1,24 @@
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '1.1.1.1']); 
+
+
+if(process.env.NODE_ENV != "production") {
+    require('dotenv').config()
+}
+
 const express = require("express");
 const app = express();
 
 const mongoose = require('mongoose');
+// const { MongoClient } = require('mongodb');
+
 const path = require("path");
 const ejsMate = require("ejs-mate");
 const methodOverride = require('method-override')
+
 const session  = require("express-session");
+const { MongoStore } = require("connect-mongo");
+
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -24,9 +37,26 @@ const listingRoutes = require("./routes/listing");
 const reviewRoutes = require("./routes/review");
 const userRoutes = require("./routes/user.js");
 
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+
+const dburl = process.env.ATLASDB_URL;
+
+const store = MongoStore.create({
+    mongoUrl: dburl,
+    cripto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24*3600,
+});
+
+store.on("error", () => {
+    console.log("ERROR IN MONGO SESSION STORE", err);
+})
+
 
 const sessionOptions = {
-    secret: "mysecretcode",
+    store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -50,12 +80,18 @@ app.set("views", path.join(__dirname, "views"));  // all file(.ejs) will find he
 app.engine('ejs', ejsMate);
 
 
+
 main().then(() => {
     console.log("DB Connection Successfull");
 }).catch(err => console.log(err));
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
-    // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+    try {
+        await mongoose.connect(dburl);
+        console.log("DB Connected");
+    } catch (err) {
+        console.error("Full Error:");
+        console.error(err);
+    }
 }
 
 
@@ -64,9 +100,9 @@ app.listen(8020, () =>{
 });
 
 
-app.get("/", (req, res) => {
-    res.send("App Listening");
-});
+// app.get("/", (req, res) => {
+//     res.send("App Listening");
+// });
 
 // Initialize session support and connect-flash for flash messages
 app.use(session(sessionOptions));

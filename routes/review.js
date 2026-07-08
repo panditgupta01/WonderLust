@@ -16,8 +16,6 @@ const reviewController = require("../controllers/reviews.js");
 const router = express.Router({mergeParams: true});
 
 
-
-
 // Review
 router.post("/",
     isLoggedIn, 

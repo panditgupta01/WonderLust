@@ -4,7 +4,7 @@
             <div class="col-8 offset-2">
                 <br>
                 <h3>Create new Listing</h3>
-                <form method="post" action="/listings">
+                <form method="post" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" name="title" required class="form-control" placeholder="enter title">
@@ -14,9 +14,15 @@
                             <textarea name="description" id="" class="form-control"></textarea>
                         </div>
                         <div class="mb-3">
+                            <label for="image" class="form-label">Upload Listing Image</label>
+                            <input type="file" name="image" class="form-control" required>
+                        </div>
+                        <!-- <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
                             <input type="text" name="image" class="form-control" placeholder="enter img URL/link">
-                        </div>
+                        </div> -->
+
+
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="price" class="form-label">Price</label>
@@ -27,9 +33,20 @@
                                 <input type="text" name="location" class="form-control" placeholder="enter location">
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="country" class="form-label">Country</label>
-                            <input type="text" name="country" class="form-control" placeholder="enter country">
+                        <div class="row">
+                            <div class="mb-3 col-md-4">
+                                <label for="country" class="form-label">Country</label>
+                                <input type="text" name="country" class="form-control" placeholder="enter country">
+                            </div>
+                            <div class="mb-3 col-md-8">
+                                <label for="category" class="form-label">Category</label>
+                                <select name="category" id="category" class="form-select" required>
+                                    <option value="" selected disabled>Select Category</option>
+                                    <option value="Homes">🏠 Homes</option>
+                                    <option value="Experiences">🎈 Experiences</option>
+                                    <option value="Services">🛎️ Services</option>
+                                </select>
+                            </div>
                         </div>
                         <button class="btn btn-dark mb-5 mt-3 ad-btn">Submit</button>
                 </form>
