@@ -1,95 +1,121 @@
-
 <header class="airbnb-nav" id="airbnbHeader">
-    <div class="nav-row">
-      <div class="logo">
-        <a href="/listings">
-          <svg viewBox="0 0 32 32" width="28" height="28">
-            <path d="M4 5 C5.5 5 6.5 6 7 7.5 L10 20 C10.4 21.4 11.8 21.7 12.6 20.6 L15.2 16 C15.6 15.2 16.4 15.2 16.8 16 L19.4 20.6 C20.2 21.7 21.6 21.4 22 20 L25 7.5 C25.5 6 26.5 5 28 5 C29.8 5 31 6.7 30.5 8.5 L26.3 24.2 C25.6 26.5 23 27.2 21.5 25.3 L16 18.2 L10.5 25.3 C9 27.2 6.4 26.5 5.7 24.2 L1.5 8.5 C1 6.7 2.2 5 4 5Z"/>
-          </svg>
-        </a>
-        <span>WanderLust</span>
-      </div>
+  <div class="nav-row">
+    <div class="logo">
+      <a href="/listings">
+        <svg viewBox="0 0 32 32" width="28" height="28">
+          <path
+            d="M4 5 C5.5 5 6.5 6 7 7.5 L10 20 C10.4 21.4 11.8 21.7 12.6 20.6 L15.2 16 C15.6 15.2 16.4 15.2 16.8 16 L19.4 20.6 C20.2 21.7 21.6 21.4 22 20 L25 7.5 C25.5 6 26.5 5 28 5 C29.8 5 31 6.7 30.5 8.5 L26.3 24.2 C25.6 26.5 23 27.2 21.5 25.3 L16 18.2 L10.5 25.3 C9 27.2 6.4 26.5 5.7 24.2 L1.5 8.5 C1 6.7 2.2 5 4 5Z" />
+        </svg>
+      </a>
+      <span>WanderLust</span>
+    </div>
 
-      <div class="nav-center">
-        <nav class="tabs" id="airbnbTabs">
-          <button class="tab active" data-tab="all">
-            <a class="link" href="/listings">
-              <span class="icon">🌍</span><span class="label">All</span>
-            </a>
-          </button>
-          <button class="tab" data-tab="homes">
-            <a class="link" href="/listings?category=Homes">
-              <span class="icon">🏠</span><span class="label">Homes</span>
-            </a>
-          </button>
-          <button class="tab" data-tab="experiences">
-            <a class="link" href="/listings?category=Experiences">
-              <span class="icon">🎈</span><span class="label">Experiences</span>
-            </a>
-          </button>
-          <button class="tab" data-tab="services">
-            <a class="link" href="/listings?category=Services">
-              <span class="icon">🛎️</span><span class="label">Services</span>
-            </a>
-          </button>
-        </nav>
+    <div class="nav-center">
+      <nav class="tabs d-none d-md-flex" id="airbnbTabs">
+        <button class="tab <%= activeCategory === 'All' ? 'active' : '' %>" data-tab="all">
+          <a class="link" href="/listings">
+            <span class="icon">🌍</span><span class="label">All</span>
+          </a>
+        </button>
+        <button class="tab <%= activeCategory === 'Homes' ? 'active' : '' %>" data-tab="homes">
+          <a class="link" href="/listings?category=Homes">
+            <span class="icon">🏠</span><span class="label">Homes</span>
+          </a>
+        </button>
+        <button class="tab <%= activeCategory === 'Experiences' ? 'active' : '' %>" data-tab="experiences">
+          <a class="link" href="/listings?category=Experiences">
+            <span class="icon">🎈</span><span class="label">Experiences</span>
+          </a>
+        </button>
+        <button class="tab <%= activeCategory === 'Services' ? 'active' : '' %>" data-tab="services">
+          <a class="link" href="/listings?category=Services">
+            <span class="icon">🛎️</span><span class="label">Services</span>
+          </a>
+        </button>
+      </nav>
 
-        <div class="compact-search">
-          <span style="font-size:18px;">🏠</span>
-          <label for="where" class="seg">Anywhere</label>
-          <!-- <span class="seg">Anytime</span>
+      <div class="compact-search">
+        <!-- <span style="font-size:18px;">🏠</span> -->
+        <label for="where" class="seg">Anywhere</label>
+        <!-- <span class="seg">Anytime</span>
           <span class="seg guests">Add guests</span> -->
-          <span class="search-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
-              <circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-            </svg>
-          </span>
-        </div>
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="4">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </span>
       </div>
+    </div>
 
-      <div class="nav-right">
-        <a class="link" href="/listings/new">
-          <span class="host-link">Become a host</span>
-        </a>
-        <div class="dropdown">
-          <button class="user-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      
-            <i class="fa-solid fa-bars"></i>
-          </button>
-      
-          <ul class="dropdown-menu dropdown-menu-end shadow rounded-4">
-            <li><a class="dropdown-item" href="#">Help Centre</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="/listings/new">Become a host</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <% if(!userLogin) {%>
+    <div class="nav-right">
+      <a class="link d-none d-sm-block d-md-none d-lg-block" href="/listings/new">
+        <span class="host-link">Become a host</span>
+      </a>
+      <div class="dropdown">
+        <button class="user-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        
+
+        <ul class="dropdown-menu dropdown-menu-end shadow rounded-4">
+          <li class=" d-sm-block d-md-none">
+              <button class="dropdown-item <%= activeCategory === 'All' ? 'active' : '' %>" data-tab="all">
+                <a class="link" href="/listings">
+                  <span class="icon">🌍</span><span class="label">All</span>
+                </a>
+              </button>
+              <button class="dropdown-item <%= activeCategory === 'Homes' ? 'active' : '' %>" data-tab="homes">
+                <a class="link" href="/listings?category=Homes">
+                  <span class="icon">🏠</span><span class="label">Homes</span>
+                </a>
+              </button>
+              <button class="dropdown-item <%= activeCategory === 'Experiences' ? 'active' : '' %>" data-tab="experiences">
+                <a class="link" href="/listings?category=Experiences">
+                  <span class="icon">🎈</span><span class="label">Experiences</span>
+                </a>
+              </button>
+              <button class="dropdown-item <%= activeCategory === 'Services' ? 'active' : '' %>" data-tab="services">
+                <a class="link" href="/listings?category=Services">
+                  <span class="icon">🛎️</span><span class="label">Services</span>
+                </a>
+              </button>
+          </li>
+
+          <li><a class="dropdown-item" href="#">Help Centre</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" href="/listings/new">Become a host</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <% if(!userLogin) {%>
             <li><a class="dropdown-item" href="/signup">Signup</a></li>
             <li><a class="dropdown-item" href="/login">Login</a></li>
             <% } %>
-            <% if(userLogin) {%>
-            <li><a class="dropdown-item" href="/logout">Logout</a></li>
-            <% } %>
-          </ul>
-        </div>
+              <% if(userLogin) {%>
+                <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                <% } %>
+        </ul>
       </div>
-      </div>
+    </div>
+  </div>
 
-    <div class="search-row">
-      <form action="/listings/search" method="get">
-        <div class="search-bar">
-          <div class="field">
-            <label class="label" for="where">Where</label>
-            <input class="search" id="where" name="q" style="border: none;" placeholder="Search destinations" type="search">
-                
-            <!-- <span class="label">Where</span>
+  <div class="search-row">
+    <form action="/listings/search" method="get">
+      <div class="search-bar">
+        <div class="field">
+          <label class="label" for="where">Where</label>
+          <input class="search" id="where" name="q" style="border: none;" placeholder="Search destinations"
+            type="search">
+
+          <!-- <span class="label">Where</span>
             <span class="value">Search destinations</span> -->
-          </div>
-    
-          <!-- <div class="divider"></div>
+        </div>
+
+        <!-- <div class="divider"></div>
           <div class="field">
             <span class="label">When</span>
             <span class="value">Add dates</span>
@@ -101,13 +127,13 @@
               <div class="value">Add guests</div>
             </div>
           </div> -->
-          <button class="search-btn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-              <circle cx="11" cy="11" r="7" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-        </div>
-      </form>
-    </div>
-  </header>
+        <button class="search-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</header>

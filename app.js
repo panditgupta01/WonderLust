@@ -122,6 +122,7 @@ passport.deserializeUser(User.deserializeUser()); // retrieves user from identif
 // Expose flash messages to all templates via `res.locals` so views can
 // render `success` and `error` messages. Also useful for logging/debug.
 app.use((req, res, next) => {
+    res.locals.activeCategory = req.query.category || "All";
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.userLogin = req.user;

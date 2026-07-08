@@ -6,15 +6,15 @@
 
     <body>
         <div class="row">
-            <div class="col-8 offset-2">
+            <div class="col-8 offset-2 ">
                 <div class="row col-8 offset-2 mt-3">
                     <h2><b>
                             <%= listing.title %>
                         </b></h2>
                 </div>
-                <div class="card col-6 offset-2 listing-card">
-                    <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="Listing_image">
+                <div class="card listing-card">
                     <div class="card-body">
+                        <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="Listing_image">
                         <p class="card-text">
                         <p>Owned By: <u><i>
                                     <%= listing.owner.username %>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <% if(userLogin && userLogin._id.equals(listing.owner._id)) { %>
-                    <div class="btns offset-2">
+                    <div class="btns ">
                         <form method="get" action="/listings/<%= listing._id %>/edit">
                             <button class="btn btn-dark ad-btn">Edit</button>
                         </form>
@@ -45,7 +45,7 @@
                     </div>
                     <% } %>
             </div>
-            <div class="col-8 offset-3 mb-3">
+            <div class="mb-3 mt-3 col-8 offset-2">
                 <% if(userLogin) { %>
                     <h4>leave a Review</h4>
                     <form action="/listings/<%= listing.id %>/reviews" method="post" class="needs-validation"
