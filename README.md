@@ -4,7 +4,7 @@
 
 🚀 **Live Demo:** https://wonderlust-9a15.onrender.com/listings
 
-📂 **GitHub Repository:** https://github.com/panditgupta01/WonderLust
+📂 **GitHub Repository:** https://github.com/panditgupta01/WanderLust
 
 ---
 
@@ -74,7 +74,7 @@
 # 📁 Folder Structure
 
 ```
-WonderLust/
+WanderLust/
 │
 ├── controllers/
 ├── models/
@@ -97,13 +97,13 @@ WonderLust/
 ## Clone the repository
 
 ```bash
-git clone https://github.com/panditgupta01/WonderLust.git
+git clone https://github.com/panditgupta01/WanderLust.git
 ```
 
 Go into the project directory
 
 ```bash
-cd WonderLust
+cd WanderLust
 ```
 
 Install dependencies
